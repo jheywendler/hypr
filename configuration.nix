@@ -79,7 +79,7 @@
   users.users.kyu = {
     isNormalUser = true;
     description = "Kyu";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "disk"];
     packages = with pkgs; [];
   };
 
@@ -92,7 +92,7 @@
     wget
     git
     firefox
-    ffmpeg_7
+    ffmpeg
     kitty
     discord
     vlc
@@ -111,9 +111,6 @@
     ddcutil
     mako
     hyprshot
-    qt5-wayland
-    qt6-wayland
-
   ];
 
   # Fonts Packages
@@ -159,11 +156,16 @@
 
   #Hyprland
   programs.hyprland = {
-   enable = true;
-   xwayland.enable = true;
+    enable = true;
+    xwayland.enable = true;
   };
   services.displayManager.gdm.enable = true;
   services.displayManager.gdm.wayland = true;
+  
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+    };
 
   # Experimental Features
   nix.settings = {
@@ -183,5 +185,8 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
+  # USB Automount
+  services.udisk2.enable = true;
+  services.gvfs.enable = true;
 
 }
