@@ -17,6 +17,22 @@
     x11.enable = true;
   };
 
+  # Configuração do shell Zsh
+  programs.zsh = {
+  enable = true;
+  defaultKeymap = "emacs";
+  
+  shellAliases = {
+    ll = "ls -la";
+  };
+  
+  oh-my-zsh = {
+    enable = true;
+    plugins = [ "git" "docker" "colored-man-pages" ];
+    theme = "robbyrussell";
+  };
+  };
+
   # GTK
   gtk = {
     enable = true;
